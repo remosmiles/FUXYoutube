@@ -1,14 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); /* Für den Retro-Gaming-Text */
+
+:root {
+    --neon-pink: #FF00FF;
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --dark-bg: #1a0f2c;
+    --mid-bg: #2d184a;
+}
+
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Press Start 2P', cursive; /* Retro-Gaming-Font */
+    background: var(--dark-bg);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--neon-blue);
+    position: relative;
 }
+
+/* Hintergrund-Gitter für den Retro-Look */
+.background-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(0deg, transparent 24%, var(--neon-blue) 25%, var(--neon-blue) 26%, transparent 27%, transparent 74%, var(--neon-blue) 75%, var(--neon-blue) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--neon-blue) 25%, var(--neon-blue) 26%, transparent 27%, transparent 74%, var(--neon-blue) 75%, var(--neon-blue) 76%, transparent 77%, transparent);
+    background-size: 50px 50px; /* Größe der Quadrate */
+    opacity: 0.08; /* Dezente Transparenz */
+    z-index: 1;
+    animation: gridPulse 8s infinite alternate;
+}
+
+@keyframes gridPulse {
+    0% { opacity: 0.08; transform: scale(1); }
+    50% { opacity: 0.12; transform: scale(1.01); }
+    100% { opacity: 0.08; transform: scale(1); }
+}
+
+#game-container {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.4); /* Leichte Transparenz für Hintergrund */
+    border: 3px solid var(--neon-pink);
+    box-shadow: 0 0 20px var(--neon-pink), inset 0 0 10px var(--neon-pink);
+    border-radius: 15px;
+    animation: borderGlow 3s infinite alternate;
+}
+
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 20px var(--neon-pink), inset 0 0 10px var(--neon-pink); }
+    100% { box-shadow: 0 0 30px var(--neon-blue), inset 0 0 15px var(--neon-blue); }
+}
+
 
 #fuchs-container {
     position: fixed;
@@ -23,41 +75,76 @@ body {
 #fuchs-img {
     width: 280px;
     height: auto;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+    display: block;
+    margin: 0 auto;
+    /* Neon-Effekt für den Fuchs */
+    filter: drop-shadow(0 0 8px var(--neon-pink)) 
+            drop-shadow(0 0 15px var(--neon-blue));
+    animation: fuchsGlow 2s infinite alternate;
 }
 
+@keyframes fuchsGlow {
+    0% { filter: drop-shadow(0 0 8px var(--neon-pink)) drop-shadow(0 0 15px var(--neon-blue)); }
+    100% { filter: drop-shadow(0 0 12px var(--neon-green)) drop-shadow(0 0 20px var(--neon-pink)); }
+}
+
+
 .bubble {
-    background: white;
+    background: var(--mid-bg);
     padding: 15px 25px;
     border-radius: 30px;
     border-bottom-right-radius: 5px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px var(--neon-blue), inset 0 0 5px var(--neon-blue);
     margin-bottom: 20px;
     font-weight: bold;
     font-size: 1.2rem;
-    color: #333;
+    color: var(--neon-green);
     display: none; /* Am Anfang unsichtbar */
+    border: 1px solid var(--neon-blue);
+    animation: bubblePulse 1.5s infinite alternate;
 }
+
+@keyframes bubblePulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px var(--neon-blue), inset 0 0 5px var(--neon-blue); }
+    100% { transform: scale(1.02); box-shadow: 0 0 15px var(--neon-green), inset 0 0 7px var(--neon-green); }
+}
+
+.neon-text {
+    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-blue);
+}
+
 
 #button-wrapper {
     display: none; /* Erst am Ende zeigen */
     text-align: center;
+    margin-top: 50px; /* Abstand zum Fuchs */
 }
 
-#sub-button {
+.neon-button {
     padding: 20px 40px;
     font-size: 1.8rem;
-    background-color: #ff0000;
-    color: white;
-    border: none;
+    background-color: var(--neon-pink);
+    color: var(--dark-bg); /* Textfarbe, die gut kontrastiert */
+    border: 3px solid var(--neon-green);
     border-radius: 50px;
     text-decoration: none;
     font-weight: 800;
-    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
-    transition: transform 0.2s;
+    box-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-blue); /* Doppelschatten */
+    transition: transform 0.2s, background-color 0.3s, box-shadow 0.3s;
     display: inline-block;
+    cursor: pointer;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Leichter Schatten für Textlesbarkeit */
+    animation: buttonGlow 2s infinite alternate;
 }
 
-#sub-button:hover {
+.neon-button:hover {
     transform: scale(1.1);
+    background-color: var(--neon-green); /* Farbe beim Hover ändern */
+    box-shadow: 0 0 25px var(--neon-green), 0 0 40px var(--neon-pink);
+    color: var(--dark-bg);
+}
+
+@keyframes buttonGlow {
+    0% { box-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-blue); }
+    100% { box-shadow: 0 0 25px var(--neon-green), 0 0 40px var(--neon-pink); }
 }
