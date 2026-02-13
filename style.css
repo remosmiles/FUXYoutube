@@ -2,12 +2,12 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: black;
+    background-color: #050510; /* Ganz dunkles Blau statt Schwarz */
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #matrix {
@@ -21,33 +21,33 @@ body {
 
 #fuchs-container {
     position: absolute;
-    /* Startposition: weit oben außerhalb des Bildschirms */
-    top: -500px; 
+    top: -600px; 
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    transition: top 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: top 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 10;
 }
 
 #fuchs-img {
-    width: 300px;
+    width: 280px;
     height: auto;
-    filter: drop-shadow(0 0 15px #00FF00); /* Grüner Neon-Schein passend zur Matrix */
+    /* Jetzt mit blauem Neon-Schein passend zu den Herzen */
+    filter: drop-shadow(0 0 15px #00d2ff); 
 }
 
 .bubble {
-    background: rgba(0, 0, 0, 0.8);
-    color: #00FF00;
+    background: rgba(10, 10, 30, 0.9);
+    color: #00d2ff;
     padding: 15px 25px;
-    border-radius: 20px;
-    border: 2px solid #00FF00;
-    box-shadow: 0 0 15px #00FF00;
+    border-radius: 25px;
+    border: 2px solid #00d2ff;
+    box-shadow: 0 0 20px #00d2ff;
     margin-bottom: 20px;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     display: none;
-    text-shadow: 0 0 5px #00FF00;
+    text-shadow: 0 0 8px #00d2ff;
 }
 
 #button-wrapper {
@@ -60,19 +60,20 @@ body {
     padding: 20px 40px;
     font-size: 1.8rem;
     background-color: transparent;
-    color: #00FF00;
-    border: 3px solid #00FF00;
+    color: #00d2ff;
+    border: 3px solid #00d2ff;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 0 20px #00FF00;
+    box-shadow: 0 0 25px #00d2ff;
     transition: all 0.3s;
     text-transform: uppercase;
+    display: inline-block;
 }
 
 #sub-button:hover {
-    background-color: #00FF00;
-    color: black;
-    box-shadow: 0 0 40px #00FF00;
+    background-color: #00d2ff;
+    color: #050510;
+    box-shadow: 0 0 50px #00d2ff;
     transform: scale(1.1);
 }
