@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fuchs-container {
+    position: fixed;
+    bottom: -600px; /* Startposition: versteckt unten */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    transition: bottom 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+#fuchs-img {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+.bubble {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+    display: none; /* Am Anfang unsichtbar */
+}
+
+#button-wrapper {
+    display: none; /* Erst am Ende zeigen */
+    text-align: center;
+}
+
+#sub-button {
+    padding: 20px 40px;
+    font-size: 1.8rem;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+#sub-button:hover {
+    transform: scale(1.1);
+}
